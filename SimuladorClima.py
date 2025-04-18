@@ -20,16 +20,14 @@ class SimuladorClima:
 
     def ejecutar(self):
         print("Simulador de clima con Cadenas de Márkov\n")
-        dias = int(input("Ingrese N (20‑40): "))
-        if not 20 <= dias <= 40:
-            raise ValueError("N debe estar entre 20 y 40")
+        dias = self._leerEntero("Ingrese N (20‑40 | Cantidad de dias Anteriores): ", 20, 40)
 
-        SEMILLA_FIJA = 42  # ← valor hard‑codeado
+        SEMILLA_FIJA = 10
         historial = HistorialClima(dias, SEMILLA_FIJA)
         matrizTransicion = MatrizTransicion(historial.secuencia).matriz
         cadena = CadenaMarkov(matrizTransicion)
 
-        ImpresoraConsola.encabezado("Serie generada (DÍA 1 = hoy)")
+        ImpresoraConsola.encabezado("Serie generada (DÍA 0 = hoy)")
         print(" ".join(reversed(historial.secuencia)))
 
         ImpresoraConsola.encabezado("Matriz de transición A")
