@@ -7,20 +7,18 @@ class HistorialClima:
         self.secuencia: List[str] = self.generarSecuencia(dias, semilla)
 
     def generarSecuencia(self, dias: int, semilla: Optional[int]) -> List[str]:
-        if semilla is not None:
-            random.seed(semilla)
-
+        rng = random.Random(semilla)
         nombres = Estado.NOMBRES
         secuencia: List[str] = []
 
-        for i in range(dias):
-            if i == 0:
-                clima = random.choice(nombres)
+        for _ in range(dias):
+            if not secuencia:
+                clima = rng.choice(nombres)
             else:
-                climaAnterior = Estado.indice(secuencia[-1])
-                pesos = [0.25] * 4
-                pesos[climaAnterior] += 0.45
-                clima = random.choices(nombres, weights=pesos)[0]
+                idx_ant = Estado.indice(secuencia[-1])
+                pesos = [1.0] * len(nombres)
+                pesos[idx_ant] += 1.8
+                clima = rng.choices(nombres, weights=pesos, k=1)[0]
             secuencia.append(clima)
 
         return secuencia

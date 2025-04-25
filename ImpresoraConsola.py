@@ -8,8 +8,10 @@ class ImpresoraConsola:
 
     @staticmethod
     def mostrarMatriz(matriz: List[List[float]]):
-        for fila in matriz:
-            print(" ".join(f"{valor:6.3f}" for valor in fila))
+        nombres = Estado.NOMBRES
+        print("       " + " ".join(f"{nom:>6}" for nom in nombres))
+        for i, fila in enumerate(matriz):
+            print(f"{nombres[i]:>6} " + " ".join(f"{valor:6.3f}" for valor in fila))
 
     @staticmethod
     def mostrarVector(vector: List[float]):

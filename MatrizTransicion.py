@@ -12,9 +12,14 @@ class MatrizTransicion:
             col = Estado.indice(hoy)
             fila = Estado.indice(manana)
             conteos[fila][col] += 1
+
         matriz = [[0.0] * k for _ in range(k)]
         for col in range(k):
-            totalColumna = sum(conteos[fila][col] for fila in range(k)) or k
-            for fila in range(k):
-                matriz[fila][col] = conteos[fila][col] / totalColumna
+            suma = sum(conteos[fila][col] for fila in range(k))
+            if suma == 0:
+                for fila in range(k):
+                    matriz[fila][col] = 1.0 / k
+            else:
+                for fila in range(k):
+                    matriz[fila][col] = conteos[fila][col] / suma
         return matriz
