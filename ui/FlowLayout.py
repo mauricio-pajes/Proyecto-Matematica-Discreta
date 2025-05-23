@@ -3,9 +3,7 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt, QRect, QSize, QPoint
 
-# Importa tus clases de simulación
 
-# FlowLayout para distribuir íconos de forma fluida
 class FlowLayout(QLayout):
     def __init__(self, parent=None, margin=0, spacing=-1):
         super().__init__(parent)
@@ -31,7 +29,6 @@ class FlowLayout(QLayout):
         return self.itemList.pop(index) if 0 <= index < len(self.itemList) else None
 
     def expandingDirections(self):
-        # No permitimos expansión adicional
         return Qt.Orientation(0)
 
     def hasHeightForWidth(self):

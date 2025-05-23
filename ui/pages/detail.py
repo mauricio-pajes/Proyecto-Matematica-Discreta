@@ -16,7 +16,6 @@ def build(mw):
     return w
 
 
-# ----------------- detalle día ----------------- #
 def populate_detalle(mw, day: int, matriz, vector):
     lay = mw.detail_layout
     _clear(lay)
@@ -47,7 +46,6 @@ def populate_detalle(mw, day: int, matriz, vector):
     _boton_volver(mw)
 
 
-# ----------------- estacionario ----------------- #
 def populate_estacionario(mw, vector):
     lay = mw.detail_layout
     _clear(lay)
@@ -56,7 +54,6 @@ def populate_estacionario(mw, vector):
     hdr.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
     lay.addWidget(hdr, alignment=Qt.AlignmentFlag.AlignCenter)
 
-    # tabla 1×N
     tbl = QTableWidget(1, len(Estado.NOMBRES))
     tbl.setHorizontalHeaderLabels(Estado.NOMBRES)
     tbl.setVerticalHeaderLabels([""])
@@ -79,7 +76,6 @@ def populate_estacionario(mw, vector):
     _boton_volver(mw)
 
 
-# -------------- helpers -------------- #
 def _clear(lay):
     while lay.count():
         it = lay.takeAt(0)

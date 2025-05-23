@@ -47,7 +47,6 @@ def build(mw):
 
     return w
 
-# ----- callbacks ----- #
 def _on_accept(mw):
     n_text = mw.page_input.findChild(QLineEdit, "inputN").text().strip()
     if n_text.isdigit():

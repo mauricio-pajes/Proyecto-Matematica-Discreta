@@ -12,15 +12,13 @@ from . import forecast
 def build(mw):
     w = QWidget()
     w.setStyleSheet("background:#F0F0F0;")
-    mw.mat_layout = QVBoxLayout(w)  # referencia global
+    mw.mat_layout = QVBoxLayout(w)
     mw.mat_layout.setContentsMargins(16, 16, 16, 16)
     mw.mat_layout.setSpacing(12)
     return w
 
 
-# ------------- LÓGICA ------------- #
 def populate(mw, dias: int, matriz) -> None:
-    """Dibuja la matriz y los botones de navegación."""
     lay = mw.mat_layout
 
     while lay.count():
@@ -55,7 +53,6 @@ def populate(mw, dias: int, matriz) -> None:
 
     lay.addWidget(table, stretch=1)
 
-    # Botones
     btn_back = QPushButton("← Volver a Secuencia")
     btn_back.setFixedHeight(32)
     btn_back.setFont(QFont("Segoe UI", 11))

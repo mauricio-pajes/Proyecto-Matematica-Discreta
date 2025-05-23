@@ -29,7 +29,6 @@ def build(mw):
     )
     lay.addWidget(inp, alignment=Qt.AlignmentFlag.AlignCenter)
 
-    # vector inicial
     vec_lbl = QLabel("Vector inicial:")
     vec_lbl.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
     lay.addWidget(vec_lbl, alignment=Qt.AlignmentFlag.AlignCenter)
@@ -41,7 +40,6 @@ def build(mw):
     hl.setSpacing(8)
     lay.addWidget(vec_container)
 
-    # Botones
     btn_back = QPushButton("← Volver a Matriz")
     btn_back.setFixedHeight(30)
     btn_back.setFont(QFont("Segoe UI", 11))
@@ -70,7 +68,6 @@ def build(mw):
     return w
 
 
-# ------------ callbacks / lógica ------------ #
 def _on_accept(mw):
     txt = mw.page_forecast.findChild(QLineEdit, "daysInput").text().strip()
     if txt.isdigit():
@@ -79,7 +76,6 @@ def _on_accept(mw):
 
 def populate_vector_inicial(mw, seq):
     from core.Estado import Estado
-    # contenedor
     vec_container = mw.page_forecast.findChild(QWidget, "vecContainer")
     layout = vec_container.layout()
     while layout.count():

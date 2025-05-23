@@ -5,7 +5,6 @@ from PyQt6.QtGui import QFont, QColor, QPixmap
 from PyQt6.QtCore import Qt
 from ui.icon_map import UPC_LOGO
 
-# El parámetro «mw» es ModernMainMenu y nos da acceso a métodos como «crossfade».
 def build(mw):
     w = QWidget()
     w.setStyleSheet(
@@ -27,7 +26,6 @@ def build(mw):
     cl.setSpacing(15)
     cl.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-    # Logo
     logo = QLabel()
     logo.setFixedSize(100, 100)
     logo.setPixmap(QPixmap(UPC_LOGO).scaled(
@@ -36,13 +34,11 @@ def build(mw):
     ))
     cl.addWidget(logo, alignment=Qt.AlignmentFlag.AlignCenter)
 
-    # Título
     title = QLabel("Simulador de Clima\nCadenas de Márkov")
     title.setAlignment(Qt.AlignmentFlag.AlignCenter)
     title.setFont(QFont("Segoe UI", 16, QFont.Weight.Bold))
     cl.addWidget(title)
 
-    # Botón empezar
     btn = QPushButton("➤ Nueva simulación")
     btn.setFixedHeight(40)
     btn.setFont(QFont("Segoe UI", 12))
@@ -53,7 +49,6 @@ def build(mw):
     btn.clicked.connect(lambda: mw.crossfade(mw.page_input))
     cl.addWidget(btn)
 
-    # Botón salir
     exit_btn = QPushButton("✖ Salir")
     exit_btn.setFixedHeight(30)
     exit_btn.setFont(QFont("Segoe UI", 11))

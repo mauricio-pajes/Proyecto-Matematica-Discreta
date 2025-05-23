@@ -5,7 +5,7 @@ from PyQt6.QtWidgets import (
     QMainWindow,
     QStackedWidget,
     QMessageBox,
-    QGraphicsOpacityEffect,   # ← aquí
+    QGraphicsOpacityEffect,
 )
 
 from PyQt6.QtCore import (
@@ -26,9 +26,6 @@ from core.Calculos import multiplicarMatrizVector
 
 
 class ModernMainMenu(QMainWindow):
-    """Ventana principal que orquesta la navegación."""
-
-    # -------------------------- INIT -------------------------- #
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Simulador de Clima")
@@ -38,7 +35,6 @@ class ModernMainMenu(QMainWindow):
         self.stack = QStackedWidget(self)
         self.setCentralWidget(self.stack)
 
-        # Páginas
         self.page_menu = menu.build(self)
         self.page_input = input.build(self)
         self.page_sequence = sequence.build(self)
@@ -58,13 +54,10 @@ class ModernMainMenu(QMainWindow):
         ):
             self.stack.addWidget(page)
 
-        # Estado de la simulación
         self.current_sequence: List[str] = []
         self.current_matrix: List[List[float]] = []
 
-    # ------------------ LÓGICA DE LA APP ------------------ #
     def generar_simulacion(self, n: int) -> None:
-        """Crea secuencia y matriz, luego navega a la página de secuencia."""
         semilla = int(time.time() * 1000)
         historial = HistorialClima(n, semilla)
         matriz = MatrizTransicion(historial.secuencia).matriz
@@ -103,7 +96,6 @@ class ModernMainMenu(QMainWindow):
         detail.populate_estacionario(self, vect_pi)
         self.crossfade(self.page_detail)
 
-    # ---------------------- ANIMACIÓN ---------------------- #
     def crossfade(self, to_widget) -> None:
         effect = QGraphicsOpacityEffect(self.stack)
         self.stack.setGraphicsEffect(effect)

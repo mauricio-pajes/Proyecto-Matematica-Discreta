@@ -33,7 +33,6 @@ def build(mw):
     mw.results_flow = flow
     lay.addWidget(flow_container)
 
-    # botones
     btn_back = QPushButton("← Volver")
     btn_back.setFixedHeight(32)
     btn_back.setFont(QFont("Segoe UI", 11))
@@ -62,7 +61,6 @@ def build(mw):
     return w
 
 
-# ------------- LÓGICA ------------- #
 def populate(mw, days: int):
     flow = mw.results_flow
     while flow.count():

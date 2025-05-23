@@ -8,8 +8,7 @@ from PyQt6.QtCore import Qt
 
 from ui.icon_map import ICON_MAP, TEXT_MAP
 from ui.FlowLayout import FlowLayout
-from . import matrix  # para invocar populate() y navegación
-
+from . import matrix
 
 def build(mw):
     w = QWidget()
@@ -26,11 +25,9 @@ def build(mw):
     flow_container = QWidget()
     flow = FlowLayout(flow_container, margin=0, spacing=8)
     flow_container.setLayout(flow)
-    # Guardamos la referencia para futuros rellenos
     mw.seq_flow = flow
     layout.addWidget(flow_container)
 
-    # --- botones inferiores ---
     btn_matrix = QPushButton("▶ Ver Matriz")
     btn_matrix.setFixedHeight(30)
     btn_matrix.setFont(QFont("Segoe UI", 11))
@@ -70,11 +67,8 @@ def build(mw):
     return w
 
 
-# ------------- LÓGICA ------------- #
 def populate(mw, seq: List[str]) -> None:
-    """Rellena el flujo de iconos con la secuencia histórica."""
     flow = mw.seq_flow
-    # 1) Limpiar
     while flow.count():
         it = flow.takeAt(0)
         if it.widget():
