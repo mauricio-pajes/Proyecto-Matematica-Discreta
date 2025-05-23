@@ -13,11 +13,13 @@ def build(mw):
     lay.setContentsMargins(20, 20, 20, 20)
     lay.setSpacing(20)
 
+    # Instrucción
     lbl = QLabel("¿Cuántos días quieres pronosticar? (≥1):")
     lbl.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
     lbl.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
     lay.addWidget(lbl, alignment=Qt.AlignmentFlag.AlignCenter)
 
+    # Input de días
     inp = QLineEdit()
     inp.setObjectName("daysInput")
     inp.setFixedWidth(120)
@@ -30,11 +32,13 @@ def build(mw):
     )
     lay.addWidget(inp, alignment=Qt.AlignmentFlag.AlignCenter)
 
+    # Etiqueta vector
     vec_lbl = QLabel("Vector inicial:")
     vec_lbl.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
     vec_lbl.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
     lay.addWidget(vec_lbl, alignment=Qt.AlignmentFlag.AlignCenter)
 
+    # Contenedor del vector dinámico
     vec_container = QWidget()
     vec_container.setObjectName("vecContainer")
     hl = QHBoxLayout(vec_container)
@@ -42,6 +46,7 @@ def build(mw):
     hl.setSpacing(8)
     lay.addWidget(vec_container)
 
+    # Botón volver
     btn_back = QPushButton("← Volver a Matriz")
     btn_back.setFixedHeight(30)
     btn_back.setFont(QFont("Segoe UI", 11))
@@ -51,6 +56,7 @@ def build(mw):
     )
     btn_back.clicked.connect(lambda: mw.crossfade(mw.page_matrix))
 
+    # Botón continuar
     btn_go = QPushButton("▶ Continuar")
     btn_go.setFixedHeight(35)
     btn_go.setFont(QFont("Segoe UI", 12))
@@ -60,6 +66,7 @@ def build(mw):
     )
     btn_go.clicked.connect(lambda: _on_accept(mw))
 
+    # Layout de botones
     hb = QHBoxLayout()
     hb.setSpacing(20)
     hb.setAlignment(Qt.AlignmentFlag.AlignCenter)

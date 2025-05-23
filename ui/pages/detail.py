@@ -1,10 +1,12 @@
 from PyQt6.QtWidgets import (
-    QWidget, QVBoxLayout, QLabel, QTableWidget, QTableWidgetItem, QPushButton, QHBoxLayout, QHeaderView
+    QWidget, QVBoxLayout, QLabel, QTableWidget, QTableWidgetItem,
+    QPushButton, QHBoxLayout, QHeaderView
 )
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QColor
 from PyQt6.QtCore import Qt
 
 from core.Estado import Estado
+from . import forecast
 
 
 def build(mw):
@@ -71,12 +73,13 @@ def populate_estacionario(mw, vector):
     tbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
     tbl.verticalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
     tbl.setStyleSheet(
-        "QTableWidget { background:white; border:1px solid #CCC; border-radius:6px; gridline-color:#EEE; }"
-        "QHeaderView::section { background:#F5F5F5; padding:6px; border:none; font-weight:bold; color: #222222; }"
+        "QTableWidget { background:white; color:#222222; border:1px solid #CCC; border-radius:6px; gridline-color:#EEE; }"
+        "QHeaderView::section { background:#F5F5F5; padding:6px; border:none; font-weight:bold; color:#222222; }"
     )
     for j, val in enumerate(vector):
         cell = QTableWidgetItem(f"{val*100:.1f}%")
         cell.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+        cell.setForeground(QColor("#222222"))
         tbl.setItem(0, j, cell)
 
     lay.addWidget(tbl, stretch=1)
@@ -102,13 +105,14 @@ def _tabla_matriz(lay, matriz):
     tbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
     tbl.verticalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
     tbl.setStyleSheet(
-        "QTableWidget { background:white; border:1px solid #CCC; border-radius:6px; gridline-color:#EEE; }"
-        "QHeaderView::section { background:#F5F5F5; padding:6px; border:none; font-weight:bold; color: #222222; }"
+        "QTableWidget { background:white; color:#222222; border:1px solid #CCC; border-radius:6px; gridline-color:#EEE; }"
+        "QHeaderView::section { background:#F5F5F5; padding:6px; border:none; font-weight:bold; color:#222222; }"
     )
     for i in range(n):
         for j in range(n):
             item = QTableWidgetItem(f"{matriz[i][j]*100:.1f}%")
             item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            item.setForeground(QColor("#222222"))
             tbl.setItem(i, j, item)
     lay.addWidget(tbl, stretch=1)
 
