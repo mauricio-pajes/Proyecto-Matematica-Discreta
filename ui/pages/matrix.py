@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QTableWidget, QTableWidgetItem, QPushButton, QHeaderView
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QColor
 from PyQt6.QtCore import Qt
 
 from core.Estado import Estado
@@ -41,14 +41,15 @@ def populate(mw, dias: int, matriz) -> None:
     table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
     table.verticalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
     table.setStyleSheet(
-        "QTableWidget { background:white; border:1px solid #CCC; border-radius:6px; gridline-color:#EEE; }"
-        "QHeaderView::section { background:#F5F5F5; padding:6px; border:none; font-weight:bold; color: #222222; }"
+        "QTableWidget { background:white; color:#222222; border:1px solid #CCC; border-radius:6px; gridline-color:#EEE; }"
+        "QHeaderView::section { background:#F5F5F5; padding:6px; border:none; font-weight:bold; color:#222222; }"
     )
 
     for i in range(n):
         for j in range(n):
             item = QTableWidgetItem(f"{matriz[i][j]*100:.1f}%")
             item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            item.setForeground(QColor("#222222"))
             table.setItem(i, j, item)
 
     lay.addWidget(table, stretch=1)
