@@ -14,13 +14,13 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            pyinstaller-extra: "--windowed --add-data \"ui\\\\icons;ui/icons\""
+            pyinstaller-extra: "--windowed --add-data ui\\\\icons;ui/icons"
             artifact-name: simulador-clima-win
             output-file: simulador-clima-win.exe
           - os: macos-latest
-            pyinstaller-extra: "--windowed --add-data \"ui/icons:ui/icons\""
+            pyinstaller-extra: "--windowed --add-data ui/icons:ui/icons"
             artifact-name: simulador-clima-mac
-            output-file: simulador-clima-mac   # .app → ver nota abajo
+            output-file: simulador-clima-mac    # usa .app si cambias --onefile
 
     steps:
       - uses: actions/checkout@v4
@@ -36,8 +36,9 @@ jobs:
           pip install PyQt6 pyinstaller
 
       - name: Build executable with PyInstaller
+        shell: bash              # 👈 fuerza bash en ambos OS
         run: |
-          pyinstaller --name ${{ matrix.artifact-name }} \
+          pyinstaller --name "${{ matrix.artifact-name }}" \
                       --onefile \
                       ${{ matrix.pyinstaller-extra }} \
                       main.py
