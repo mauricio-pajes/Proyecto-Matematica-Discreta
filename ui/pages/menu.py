@@ -40,6 +40,12 @@ def build(mw):
     font.setPointSize(16)
     font.setWeight(QFont.Weight.Bold)
     title.setFont(font)
+    title.setStyleSheet("""
+        QLabel {
+            color: #222222;
+            font-family: "Segoe UI", "Arial", sans-serif;
+        }
+    """)
     cl.addWidget(title)
 
     btn = QPushButton("➤ Nueva simulación")
