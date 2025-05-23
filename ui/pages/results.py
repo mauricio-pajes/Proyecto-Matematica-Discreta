@@ -1,6 +1,4 @@
-from PyQt6.QtWidgets import (
-    QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
-)
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
 from PyQt6.QtGui import QFont, QPixmap
 from PyQt6.QtCore import Qt
 
@@ -21,6 +19,7 @@ def build(mw):
 
     title = QLabel("Pronóstico por día")
     title.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
+    title.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
     lay.addWidget(title, alignment=Qt.AlignmentFlag.AlignCenter)
 
     flow_container = QWidget()
@@ -37,8 +36,8 @@ def build(mw):
     btn_back.setFixedHeight(32)
     btn_back.setFont(QFont("Segoe UI", 11))
     btn_back.setStyleSheet(
-        "QPushButton { background:#E0E0E0; color:#333; border:none; border-radius:6px; padding:6px 14px; }"
-        "QPushButton:hover { background:#CCC; }"
+        "QPushButton { background:#E0E0E0; color:#333333; border:none; border-radius:6px; padding:6px 14px; }"
+        "QPushButton:hover { background:#CCCCCC; }"
     )
     btn_back.clicked.connect(lambda: mw.crossfade(mw.page_forecast))
 
@@ -92,6 +91,7 @@ def populate(mw, days: int):
 
         lbl_day = QLabel(f"Día {d}")
         lbl_day.setFont(day_font)
+        lbl_day.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
         lbl_day.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         cont = QWidget()

@@ -1,8 +1,6 @@
 from typing import List
 
-from PyQt6.QtWidgets import (
-    QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
-)
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
 from PyQt6.QtGui import QFont, QPixmap
 from PyQt6.QtCore import Qt
 
@@ -20,6 +18,7 @@ def build(mw):
 
     lbl = QLabel("Secuencia histórica:")
     lbl.setFont(QFont("Segoe UI", 12, QFont.Weight.Bold))
+    lbl.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
     layout.addWidget(lbl, alignment=Qt.AlignmentFlag.AlignCenter)
 
     flow_container = QWidget()
@@ -51,7 +50,7 @@ def build(mw):
     btn_back.setFixedHeight(30)
     btn_back.setFont(QFont("Segoe UI", 11))
     btn_back.setStyleSheet(
-        "QPushButton { background:#E0E0E0; color:#333; border:none; "
+        "QPushButton { background:#E0E0E0; color:#333333; border:none; "
         "border-radius:6px; padding:6px 12px; }"
         "QPushButton:hover { background:#CCCCCC; }"
     )
@@ -97,6 +96,7 @@ def populate(mw, seq: List[str]) -> None:
 
         lbl_txt = QLabel(TEXT_MAP[state])
         lbl_txt.setFont(QFont("Segoe UI", 10))
+        lbl_txt.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
         lbl_txt.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vl.addWidget(lbl_txt, alignment=Qt.AlignmentFlag.AlignCenter)
 
@@ -105,6 +105,7 @@ def populate(mw, seq: List[str]) -> None:
         if idx < len(seq) - 1:
             arr = QLabel("→")
             arr.setFont(arrow_font)
+            arr.setStyleSheet("color: #222222;")
             arr.setFixedWidth(ICON // 3)
             arr.setAlignment(Qt.AlignmentFlag.AlignCenter)
             flow.addWidget(arr)

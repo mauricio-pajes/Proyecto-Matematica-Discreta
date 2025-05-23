@@ -15,6 +15,7 @@ def build(mw):
 
     lbl = QLabel("¿Cuántos días quieres pronosticar? (≥1):")
     lbl.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
+    lbl.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
     lay.addWidget(lbl, alignment=Qt.AlignmentFlag.AlignCenter)
 
     inp = QLineEdit()
@@ -24,13 +25,14 @@ def build(mw):
     inp.setPlaceholderText(">= 1")
     inp.setValidator(QIntValidator(1, 9999, w))
     inp.setStyleSheet(
-        "QLineEdit { border:2px solid #CCC; border-radius:6px; padding:4px 8px; }"
+        "QLineEdit { border:2px solid #CCC; border-radius:6px; padding:4px 8px; color: #222222; }"
         "QLineEdit:focus { border-color:#4A90E2; }"
     )
     lay.addWidget(inp, alignment=Qt.AlignmentFlag.AlignCenter)
 
     vec_lbl = QLabel("Vector inicial:")
     vec_lbl.setFont(QFont("Segoe UI", 14, QFont.Weight.Bold))
+    vec_lbl.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
     lay.addWidget(vec_lbl, alignment=Qt.AlignmentFlag.AlignCenter)
 
     vec_container = QWidget()
@@ -44,7 +46,7 @@ def build(mw):
     btn_back.setFixedHeight(30)
     btn_back.setFont(QFont("Segoe UI", 11))
     btn_back.setStyleSheet(
-        "QPushButton { background:#E0E0E0; color:#333; border:none; border-radius:6px; padding:6px 12px; }"
+        "QPushButton { background:#E0E0E0; color:#333333; border:none; border-radius:6px; padding:6px 12px; }"
         "QPushButton:hover { background:#CCCCCC; }"
     )
     btn_back.clicked.connect(lambda: mw.crossfade(mw.page_matrix))
@@ -90,6 +92,7 @@ def populate_vector_inicial(mw, seq):
     for name, val in zip(Estado.NOMBRES, vec):
         lbl = QLabel(f"{name}: {val:.1f}")
         lbl.setFont(QFont("Segoe UI", 11))
+        lbl.setStyleSheet("color: #222222; font-family: 'Segoe UI', 'Arial', sans-serif;")
         lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         lbl.setFixedWidth(80)
         layout.addWidget(lbl)
