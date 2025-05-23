@@ -63,11 +63,19 @@ jobs:
             --name simulador-clima-mac \
             --windowed \
             --noconfirm \
+            --onedir \
+            --collect-submodules PyQt6 \
+            --hidden-import PyQt6.sip \
             --add-data "ui/icons:ui/icons" \
             main.py
 
-      - name: Upload artifact (.app)
+      - name: Package .app into ZIP
+        run: |
+          cd dist
+          ditto -c -k --keepParent simulador-clima-mac.app simulador-clima-mac.zip
+
+      - name: Upload artifact (.zip)
         uses: actions/upload-artifact@v4
         with:
           name: simulador-clima-mac
-          path: dist/simulador-clima-mac.app
+          path: dist/simulador-clima-mac.zip
