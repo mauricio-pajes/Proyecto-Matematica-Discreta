@@ -36,23 +36,44 @@ def build(mw):
 
     title = QLabel("Simulador de Clima\nCadenas de Márkov")
     title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-    title.setFont(QFont("Segoe UI", 16, QFont.Weight.Bold))
+    font = QFont()
+    font.setPointSize(16)
+    font.setWeight(QFont.Weight.Bold)
+    title.setFont(font)
     cl.addWidget(title)
 
     btn = QPushButton("➤ Nueva simulación")
     btn.setFixedHeight(40)
-    btn.setFont(QFont("Segoe UI", 12))
-    btn.setStyleSheet(
-        "QPushButton { background:#4A90E2; color:white; border:none; border-radius:8px; }"
-        "QPushButton:hover { background:#357ABD; }"
-    )
+    btn.setFont(QFont("", 12))  # Usa la fuente predeterminada del sistema
+    btn.setStyleSheet("""
+        QPushButton {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px;
+            font-weight: bold;
+        }
+        QPushButton:hover {
+            background-color: #357ABD;
+        }
+    """)
     btn.clicked.connect(lambda: mw.crossfade(mw.page_input))
     cl.addWidget(btn)
 
     exit_btn = QPushButton("✖ Salir")
     exit_btn.setFixedHeight(30)
-    exit_btn.setFont(QFont("Segoe UI", 11))
-    exit_btn.setStyleSheet("background:transparent; color:#666666; border:none;")
+    exit_btn.setFont(QFont("", 11))
+    exit_btn.setStyleSheet("""
+        QPushButton {
+            background: transparent;
+            color: #666666;
+            border: none;
+        }
+        QPushButton:hover {
+            color: #000000;
+        }
+    """)
     exit_btn.clicked.connect(mw.close)
     cl.addWidget(exit_btn, alignment=Qt.AlignmentFlag.AlignCenter)
 
