@@ -1,5 +1,5 @@
 from typing import List
-from Estado import Estado
+from .Estado import Estado
 
 class MatrizTransicion:
     def __init__(self, secuencia: List[str]):

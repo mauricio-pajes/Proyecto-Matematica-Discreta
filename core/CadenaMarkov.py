@@ -1,6 +1,9 @@
 from typing import List
-from Calculos import (multiplicarMatrizVector, multiplicarMatrices, calcularVectorEstacionario)
-
+from .Calculos import (
+    multiplicarMatrizVector,
+    multiplicarMatrices,
+    calcularVectorEstacionario,
+)
 class CadenaMarkov:
     def __init__(self, matrizTransicion: List[List[float]]):
         self.matrizTransicion = matrizTransicion

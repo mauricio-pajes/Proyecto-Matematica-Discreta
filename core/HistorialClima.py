@@ -1,6 +1,6 @@
 from typing import List, Optional
 import random
-from Estado import Estado
+from .Estado import Estado
 
 class HistorialClima:
     def __init__(self, dias: int, semilla: Optional[int] = None):

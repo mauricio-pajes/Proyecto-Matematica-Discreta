@@ -1,18 +1,9 @@
-import sys
-from typing import List
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget,
-    QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QFrame,
-    QStackedWidget, QGraphicsOpacityEffect, QGraphicsDropShadowEffect,
-    QLineEdit, QMessageBox, QTableWidget, QTableWidgetItem, QLayout
+    QLayout
 )
-from PyQt6.QtGui import QFont, QColor, QPixmap, QIntValidator
-from PyQt6.QtCore import Qt, QPropertyAnimation, QSequentialAnimationGroup, QEasingCurve, QRect, QSize, QPoint
+from PyQt6.QtCore import Qt, QRect, QSize, QPoint
 
 # Importa tus clases de simulación
-from Estado import Estado
-from HistorialClima import HistorialClima
-from MatrizTransicion import MatrizTransicion
 
 # FlowLayout para distribuir íconos de forma fluida
 class FlowLayout(QLayout):
