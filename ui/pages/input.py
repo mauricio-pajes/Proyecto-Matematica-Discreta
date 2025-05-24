@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 from PyQt6.QtGui import QFont, QIntValidator
 from PyQt6.QtCore import Qt
 
@@ -51,6 +51,22 @@ def build(mw):
 
 
 def _on_accept(mw):
-    n_text = mw.page_input.findChild(QLineEdit, "inputN").text().strip()
+    inp = mw.page_input.findChild(QLineEdit, "inputN")
+    n_text = inp.text().strip()
+
     if n_text.isdigit():
-        mw.generar_simulacion(int(n_text))
+        n = int(n_text)
+        if 20 <= n <= 40:
+            mw.generar_simulacion(n)
+        else:
+            _show_error("El número debe estar entre 20 y 40.")
+    else:
+        _show_error("Debe ingresar un número válido entre 20 y 40.")
+
+
+def _show_error(message):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Icon.Warning)
+    msg.setWindowTitle("Entrada no válida")
+    msg.setText(message)
+    msg.exec()
