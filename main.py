@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QApplication
 import sys
 
 from ui.main_window import ModernMainMenu
-
+# XD
 def main() -> None:
     app = QApplication(sys.argv)
     win = ModernMainMenu()
