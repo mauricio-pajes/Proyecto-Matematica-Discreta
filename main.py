@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QApplication
 import sys
-# comentario prueba
+# comentario prueba 1
 from ui.main_window import ModernMainMenu
 
 def main() -> None:
